@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
-    "@fishjam-cloud/react-native-client": "../../packages/react-native-client",
+    "@fishjam-cloud/react-native-client": "link:/Users/karolkakol/WebstormProjects/react-native-client-sdk/packages/react-native-client",
     "@react-navigation/native": "^6.0.2",
     "expo": "~50.0.17",
     "expo-font": "~11.10.3",
