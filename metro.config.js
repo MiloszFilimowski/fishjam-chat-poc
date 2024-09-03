@@ -1,19 +1,13 @@
 const { getDefaultConfig } = require('expo/metro-config');
-const path = require('path');
 
-// Find the project and workspace directories
-const projectRoot = __dirname;
-// This can be replaced with `find-yarn-workspace-root`
-const monorepoRoot = path.resolve(projectRoot, '../..');
+const config = getDefaultConfig(__dirname);
 
-const config = getDefaultConfig(projectRoot);
+// Example of modifying the default configuration:
+// For instance, add SVG support by replacing certain asset extensions and source extensions
+const newSourceExts = ['svg', ...config.resolver.sourceExts];
+const newAssetExts = config.resolver.assetExts.filter(ext => ext !== 'svg') // remove 'svg' if it's listed as an asset
 
-// 1. Watch all files within the monorepo
-config.watchFolders = [monorepoRoot];
-// 2. Let Metro know where to resolve packages and in what order
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(monorepoRoot, 'node_modules'),
-];
+config.resolver.sourceExts = newSourceExts;
+config.resolver.assetExts = newAssetExts;
 
 module.exports = config;
