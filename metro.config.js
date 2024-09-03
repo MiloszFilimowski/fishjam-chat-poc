@@ -1,11 +1,19 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
-
+const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path');
 
-const root = path.resolve(__dirname, '../..');
+// Find the project and workspace directories
+const projectRoot = __dirname;
+// This can be replaced with `find-yarn-workspace-root`
+const monorepoRoot = path.resolve(projectRoot, '../..');
 
-const config = {
-  watchFolders: [root],
-};
+const config = getDefaultConfig(projectRoot);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+// 1. Watch all files within the monorepo
+config.watchFolders = [monorepoRoot];
+// 2. Let Metro know where to resolve packages and in what order
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(monorepoRoot, 'node_modules'),
+];
+
+module.exports = config;

@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
-    "@fishjam-cloud/react-native-client": "*",
+    "@fishjam-cloud/react-native-client": "../../packages/react-native-client",
     "@react-navigation/native": "^6.0.2",
     "expo": "~50.0.17",
     "expo-font": "~11.10.3",
@@ -39,12 +39,5 @@
     "react-test-renderer": "18.2.0",
     "typescript": "^5.1.3"
   },
-  "private": true,
-  "expo": {
-    "autolinking": {
-      "searchPaths": [
-        "../../packages"
-      ]
-    }
-  }
+  "private": true
 }
